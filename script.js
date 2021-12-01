@@ -119,7 +119,6 @@ this function is responsible for actually modifying the web page. */
 
 function renderView(contact) {
 
-  var main = document.querySelector(".main")
   var contactInfo = document.querySelector(".contactinfo")
   var profilePicture = document.createElement("img")
   var contactName = document.createElement("div")
@@ -180,7 +179,15 @@ rinse and repeat*/
 /* 6. Create a function called cleanUpCreate that removes all of the DOM nodes that are 
 unique to the Create page. This function takes no parameters.*/
 
+function cleanUpCreate() {
 
+  const contactEdit = document.querySelector(".contactedit")
+
+  while (contactEdit.lastChild) {
+  contactEdit.lastChild.remove()
+  }
+
+}
 
 
 
@@ -189,6 +196,55 @@ unique to the Create page. This function will take in a single parameter, which 
 represents a single contact. Much like renderIndex, this function is reponsible for actually 
 modifying the web page.*/
 
+function renderCreate() {
+
+  var contactEdit = document.querySelector(".contactedit")
+  var image = document.createElement("img")
+  var formDiv = documen.createElement("div")
+  var form = document.creatElement("form")
+  var contactImg = document.createElement("div")
+  var contactName = document.createElement("div")
+  var contactPhone = document.createElement("div")
+  var contactAddress = document.createElement("div")
+  var contactEmail = document.createElement("div")
+  var buttons = document.createElement("div")
+  var submitButton = document.createElement("button")
+  var resetButton = document.createElement("button")
+  var nameInput = document.createElement("input")
+  var phoneInput = document.createElement("input")
+  var addressInput = document.createElement("input")
+  var emailInput = document.createElement("input")
+
+
+  image.src = "./img/profile.jpg"
+  contactName.className = "inputcontainer"
+  contactPhone.className = "inputcontainer"
+  contactAddress.className = "inputcontainer"
+  contactEmail.className = "inputcontainer"
+  image.className = "profilepic"
+  image.alt = "Profile picture"
+  contactImg.className = "contactimg"
+  buttons.className = "buttons"
+  submitButton.className = "button save"
+  submitButton.id = "savecontact"
+  resetButton.className = "button cancel"
+  resetButton.id = "cancel"
+  formDiv.class = "form"
+
+  contactImg.appendChild(image)
+  contactEdit.appendChild(contactImg)
+  form.appendChild(contactName)
+  form.appendChild(contactPhone)
+  form.appendChild(contactAddress)
+  form.appendChild(contactEmail)
+  form.appendChild(buttons)
+  formDiv.appendChild(form)
+  contactImg.appendChild(image)
+  contactEdit.appendChild(contactImg)
+  contactEdit.appendChild(formDiv)
+  
+
+}
 
 
 
