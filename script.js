@@ -4,9 +4,9 @@
 of the DOM nodes that are unique to the Index page. 
 This function takes no parameters. */
 
-const main = document.querySelector(".main")
-
 function cleanUpIndex() {
+
+  const main = document.querySelector(".main")
 
   while (main.lastChild) {
   main.lastChild.remove()
@@ -28,11 +28,14 @@ function createSingleIndex(object) {
   var newDiv = document.createElement("div")
   var para = document.createElement("p")
   var newLink = document.createElement("a")
+
   newLink.href = "page3.html"
   newDiv.className = "contact"
   para.innerHTML = object.name
+
   newDiv.append(para)
   newLink.append(newDiv)
+  
   return newLink
 
 }
@@ -69,11 +72,16 @@ let contactList = [
   }
 ]
 
-function renderIndex(contactList) {
-  for (var i=0; i < contactList.length; i++) {
+function renderIndex(contacts) {
+
+  const main = document.querySelector(".main")
+
+  for (var i=0; i < contacts.length; i++) {
+
     var element = contactList[i]
-    main.appendChild(createSingleIndex(element))
-  }
+    main.appendChild(createSingleIndex(element)
+
+    )}
 }
 
 
@@ -85,52 +93,73 @@ function renderIndex(contactList) {
 
 
 /*
-Here is an example of a contact list array, with two contacts already populated
-let contactList = [
-    {
-      name: "Roberta Dobbs",
-      phone: "778-555-1234",
-      address: "101 Main St, Anytown, USA",
-      email: "subgenius@slack.example.com",
-    }, 
-    {
-      name: "Bugs Bunny",
-      phone: "123-867-5309",
-      address: "Warner Brothers Animation Lot",
-      email: "whatsup@doc.example.com",
-    },
-  ]
-
-
-How you can tell it's working
-
-If you go to an index page, and you open the browser console, you should be able to:
-
-- call cleanUpIndex() to delete all the index cards
-- call renderIndex(contactList) to put them all back
-    - the page should be exactly the same as it was before!
--rinse and repeat */
-
-
-
-
-
 //View Page
 
 
 /* 4. Create a function called cleanUpView that removes all of the DOM nodes that are unique to the View page. 
 This function takes no parameters. */
 
+function cleanUpView() {
+
+  const contactInfo = document.querySelector(".contactinfo")
+
+  while (contactInfo.lastChild) {
+  contactInfo.lastChild.remove()
+  }
+
+}
 
 
 
 
+/* 5. Create a function called renderView that creates all of the DOM nodes 
+that are unique to the View page.  This function will take in a single parameter, 
+which is an object that represents a single contact.  Much like renderIndex, 
+this function is responsible for actually modifying the web page. */
 
-/* 5. Create a function called renderView that creates all of the DOM nodes that are unique to the View page. 
-This function will take in a single parameter, which is an object that represents a single contact. 
-Much like renderIndex, this function is responsible for actually modifying the web page. */
+function renderView(contact) {
 
+  var main = document.querySelector(".main")
+  var contactInfo = document.querySelector(".contactinfo")
+  var profilePicture = document.createElement("img")
+  var contactName = document.createElement("div")
+  var contactEmail = document.createElement("div")
+  var contactPhone = document.createElement("div")
+  var contactAddress = document.createElement("div")
+  var buttons = document.createElement("div")
+  var editButton = document.createElement("button")
+  var closeButton = document.createElement("button")
 
+  profilePicture.src = "./img/profile.jpg"
+  contactName.className = "contactname"
+  contactEmail.className = "contactemail"
+  contactPhone.className = "contactphone"
+  contactAddress.className = "contactaddress"
+  profilePicture.className = "profilepic"
+  profilePicture.alt = "Profile picture"
+  buttons.className = "buttons"
+  editButton.className = "button edit"
+  editButton.valueName = "Edit"
+  closeButton.className = "button close"
+  closeButton.valueName = "Close"
+
+  contactName.innerHTML = contact.name
+  contactEmail.innerHTML = "email: " + contact.email
+  contactPhone.innerHTML = "cell: " + contact.phone
+  contactAddress.innerHTML = "address: " + contact.address
+  editButton.innerHTML = "Edit"
+  closeButton.innerHTML = "Close"
+
+  contactName.appendChild(profilePicture)
+  buttons.appendChild(editButton)
+  buttons.appendChild(closeButton)
+  contactInfo.appendChild(contactName)
+  contactInfo.appendChild(contactEmail)
+  contactInfo.appendChild(contactPhone)
+  contactInfo.appendChild(contactAddress)
+  contactInfo.appendChild(buttons)
+
+}
 
 
 
@@ -150,6 +179,7 @@ rinse and repeat*/
 
 /* 6. Create a function called cleanUpCreate that removes all of the DOM nodes that are 
 unique to the Create page. This function takes no parameters.*/
+
 
 
 
